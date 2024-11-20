@@ -21,6 +21,12 @@ app.get ('/api/contacts',(req,res)=>{
      res.send("Get All Contacts");
 })
 
+
+const port= process.env.PORT || 5000;
+app.get ('/api/contacts',(req,res)=>{
+     res.send("Get All Contacts");
+})
+
 app.listen(port, () =>{
   
      console.log('Server running on port ${port}');
