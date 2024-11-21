@@ -7,8 +7,8 @@ const  App=()=> {
 
       return (
         <>
-       
-       <Header/>
+       <H2>Hello World</H2>
+       {/* <Header/> */}
         </>
         
       );

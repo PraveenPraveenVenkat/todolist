@@ -20,10 +20,10 @@ const Header = () => {
 
   const [title,setTitle] =useState ("");
   const [Description ,setDescription] = useState ("");
-   const [todos,setTods] =useState ([])
-   const [error,setError]  =useState([])
-   const [message,setMessage]  =useState([])
-const apiurl = "http://localhost:3000/"
+  const [todos,setTodos] =useState ([])
+  const [error,setError]  =useState([])
+  const [message,setMessage]  =useState([])
+  const apiurl = "http://localhost:3000"
 
   const  handleSubmit = () => {
     if (title.trim () !== ''  && Description.trim()!==  ''){
@@ -32,11 +32,11 @@ const apiurl = "http://localhost:3000/"
          headers :{
           'content-type' :'application/json'
          },
-         body :JSON.stringify({title,Description})
+         body :JSON.stringify({title,description})
       }).then ((res)=>{
         if(res.ok){
             //Added items 
-         setTods ([...todos,{title,Description}])
+         setTodos ([...todos,{title,description}])
          setMessage ("Item Added Successfully")
         }else {
           //Set Error
@@ -46,6 +46,15 @@ const apiurl = "http://localhost:3000/"
       })
     }
       
+  };
+
+  const getItems=()=>{
+    fetch(apiurl+"/todos")
+    .then((res)=>return res,json()
+    .then(res)=>{
+      setTodos
+    }
+    )
   }
   return (
     <>
@@ -80,6 +89,15 @@ const apiurl = "http://localhost:3000/"
                  </div>
                
               </li>
+              <li className='flex-items items-start border-red-400 grid gap-36 grid-cols-3 mt-4  '>
+                 <span className='gap-x-8   gap-36 '>Item  Text</span>
+                 <div>
+                 <button className='bg-amber-400 rounded-lg ' >Edit</button>
+                 <button className='bg-red-600 rounded-lg '>Delete</button>
+                 </div>
+               
+              </li>
+              
             </ul>
           
           <div>
@@ -87,7 +105,6 @@ const apiurl = "http://localhost:3000/"
    {error &&<p className='className='text-red>{error}</p>}
 </div>
             </>
-)
-}
+)}
 
 export default Header;
