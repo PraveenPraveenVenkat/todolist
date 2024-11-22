@@ -6,8 +6,8 @@ const  App=()=> {
   
 
       return (
-        <>
-       <H2>Hello World</H2>
+      <>
+      
        {/* <Header/> */}
         </>
         
