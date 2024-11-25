@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 
 
 const Header = () => {
@@ -10,6 +10,7 @@ const Header = () => {
   const apiurl = "http://localhost:3000"
 
   const  handleSubmit = () => {
+    setError("")
     if (title.trim () !== ''  && Description.trim()!==  ''){
       fetch (apiurl + "/todos",{
         method:"POST" ,
@@ -69,19 +70,32 @@ const Header = () => {
 
             <h3 className='font-bold  text-2xl mt-5  text-left'>Tasks</h3>
             <ul>
-              <li className='flex-items items-start border-red-400 grid bg-cyan-500 gap-36 grid-cols-3 mt-4  '>
-                 <span className='gap-x-8   gap-36 '>Item  Text</span>
+              <li className='flex-items items-start border-red-400 bg-cyan-500 grid gap-4 grid-cols-2 mt-4 pt-6 '>
+                <div>
+                <span className='text-left '>Item  Text</span>
+                <span className='text-left '>Item  Desc</span>
+                </div>
+                
+
                  <div>
-                 <button className='bg-amber-400 rounded-lg ' >Edit</button>
-                 <button className='bg-red-600 rounded-lg '>Delete</button>
+                 <button className='bg-amber-400 rounded-lg >
+                  ' >Edit</button>
+                 <button className='bg-red-600 rounded-lg gap-36  '>Delete</button>
                  </div>
                
               </li>
-              <li className='flex-items items-start border-red-400 grid  gap-36 grid-cols-3 bg-cyan-500 mt-4  '>
-                 <span className='gap-x-8   gap-36 '>Item  Text</span>
+              <li className='flex-items items-start border-red-400 grid gap-4 grid-cols-2 bg-cyan-500 mt-4 pt-6'>
+
+                <div className='gap-4 grid-cols-2'> <span className='text-left text-wrap '>Item  Text</span>
+                 <span className=''>Item Desc</span>
+                </div>
+
+                
+                
+
                  <div>
-                 <button className='bg-amber-400 rounded-lg ' >Edit</button>
-                 <button className='bg-red-600 rounded-lg '>Delete</button>
+                 <button className='bg-amber-400 rounded-lg  ' >Edit</button>
+                 <button className='bg-red-600 rounded-lg  '>Delete</button>
                  </div>
                
               </li>

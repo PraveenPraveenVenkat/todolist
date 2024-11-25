@@ -1,36 +1,19 @@
-const express =require("express");
-const  dotenv =require ("dotenv").config();
+const express =require('express');
+// const  dotenv =require ("dotenv").config();
 const app =express ();
 
-const port= process.env.PORT || 5000;
-app.get ('/api/contacts',(req,res)=>{
-     res.send("Get All Contacts");
-})
 
+app.get ('/',(req,res)=>{
+     res.send("Hello World");
+})
+// Start the Server
+const port= 3000;
+// const port =3000;
 app.listen(port, () =>{
   
-     console.log('Server running on port ${port}');
-});
-
-const express =require("express");
-const  dotenv =require ("dotenv").config();
-const app =express ();
-
-const port= process.env.PORT || 5000;
-app.get ('/api/contacts',(req,res)=>{
-     res.send("Get All Contacts");
+     console.log('Server running on port port'+port);
 })
 
-
-const port= process.env.PORT || 5000;
-app.get ('/api/contacts',(req,res)=>{
-     res.send("Get All Contacts");
-})
-
-app.listen(port, () =>{
-  
-     console.log('Server running on port ${port}');
-});
 
 
 
