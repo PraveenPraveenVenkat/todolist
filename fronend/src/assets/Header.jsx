@@ -35,6 +35,9 @@ const Header = () => {
     }
        
   }
+  useEffect(()=>{
+  getItems()
+  },[])
 
   const getItems=()=>{
     fetch(apiurl+"/todos")
@@ -70,10 +73,11 @@ const Header = () => {
 
             <h3 className='font-bold  text-2xl mt-5  text-left'>Tasks</h3>
             <ul>
-              <li className='flex-items items-start border-red-400 bg-cyan-500 grid gap-4 grid-cols-2 mt-4 pt-6 '>
+              {
+                todos.map((items)=>     <li className='flex-items items-start border-red-400 bg-cyan-500 grid gap-4 grid-cols-2 mt-4 pt-6 '>
                 <div>
-                <span className='text-left '>Item  Text</span>
-                <span className='text-left '>Item  Desc</span>
+                <span className='text-left '>{Item.title}</span>
+                <span className='text-left '>{items.description}</span>
                 </div>
                 
 
@@ -82,24 +86,13 @@ const Header = () => {
                   ' >Edit</button>
                  <button className='bg-red-600 rounded-lg gap-36  '>Delete</button>
                  </div>
+                 </li>
                
-              </li>
-              <li className='flex-items items-start border-red-400 grid gap-4 grid-cols-2 bg-cyan-500 mt-4 pt-6'>
 
-                <div className='gap-4 grid-cols-2'> <span className='text-left text-wrap '>Item  Text</span>
-                 <span className=''>Item Desc</span>
-                </div>
-
-                
-                
-
-                 <div>
-                 <button className='bg-amber-400 rounded-lg  ' >Edit</button>
-                 <button className='bg-red-600 rounded-lg  '>Delete</button>
-                 </div>
+              )
+                }
+             
                
-              </li>
-              
             </ul>
           
           <div>

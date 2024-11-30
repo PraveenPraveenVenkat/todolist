@@ -21,6 +21,9 @@ app.post('/todos', (req, res) => {
     console.log(todos);
     res.status(201).json(newTodo);
 });
+const todoScheema =new mongoose.Schma({
+    
+})
 // Get All items
 app.get('/todos',(req,res)=>{
      res.json(todos);
