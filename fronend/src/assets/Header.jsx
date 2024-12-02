@@ -20,10 +20,15 @@ const Header = () => {
          body :JSON.stringify({title,description})
       }).then ((res)=>{
         if(res.ok){
-            //Added items to the List 
+           
+          //Added items to the List 
          setTodos ([...todos,{title,description}]);
-         setMessage ("Item Added Successfully");
+         setTimeout(()=>{
+          setMessage ("Item Added Successfully");
+         },3000)
+       
         }else {
+         
           //Set Error
        setError ("Unable To Create ToDo List");
         }
@@ -37,7 +42,7 @@ const Header = () => {
   }
   useEffect(()=>{
   getItems()
-  },[])
+  } ,[])
 
   const getItems=()=>{
     fetch(apiurl+"/todos")
@@ -64,7 +69,7 @@ const Header = () => {
 
 </div>
 <div className='flex-items items-start  grid gap-4 grid-cols-3  mt-7  '>
-           <input type="text"className='border-2 rounded-lg' onChange={(e)=> setTitle (e.target.value)} value={title} placeholder="Title "/> 
+           <input type="text" className='border-2 rounded-lg' onChange={(e)=> setTitle (e.target.value)} value={title} placeholder="Title "/> 
 
            <input type="Description" className='border-2 rounded-lg' onChange={(e)=> setDescription (e.target.value)} value={Description} placeholder="Description " /> 
 
