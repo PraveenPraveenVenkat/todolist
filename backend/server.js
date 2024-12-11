@@ -9,7 +9,7 @@ app.use(express.json());
 
 
 // !Connecting Mongoose
-mongoose.connect('mongodb://localhost:27017/todo')
+mongoose.connect('mongodb+srv://user1:Praveen1@cluster0.qjs8w.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 .then(()=>{
     console.log('DB Connected')
 })
@@ -25,14 +25,10 @@ const todoScheema = new mongoose.Schema({
 })
 //*Creating Model
 const todomodel =mongoose.model('todo',todoScheema);
-
-
-
 // !DotNot alert
 //* Should NodeIterator
 // TODO :Implement the process
 //? Should NodeIterator
-
 app.post('/todos',async (req, res) => {
     const { title, description } = req.body;  // 
     // const newTodo = {
@@ -48,16 +44,26 @@ try {
     res.status(201).json(newTodo);
 } catch (error) {
     console.log(error)
-    res.status(500);
+    res.status(500).json({message:error.message});
 }
      
 
 })
 
 // *Get All items
-app.get('/todos',(req,res)=>{
-     res.json(todos);
+app.get('/todos',async(req,res)=>{
+try{
+const todos = await todoModel.find();
+ res.json(todos);
+}catch(error){
+
+    console.log(error)
+    res.status(500).json({message:error.message});
+
+}
+    
 })
+
 
 // !Start the server
 const port = 3000;
